@@ -9,11 +9,11 @@ export * from './directives/inject-component.directive';
 // PIPES
 import { ComplexPropertyPipe } from './pipes/complex-property.pipe';
 import { ComponentInputsPipe } from './pipes/component-inputs.pipe';
-import { FilterResponsivePipe } from './pipeS/filter-responsive.pipe';
+import { FilterResponsivePipe } from './pipes/filter-responsive.pipe';
 
 export * from './pipes/complex-property.pipe';
 export * from './pipes/component-inputs.pipe';
-export * from './pipeS/filter-responsive.pipe';
+export * from './pipes/filter-responsive.pipe';
 
 // SERVICES
 import { DynamicComponentsService } from './services/dynamic-components.service';
@@ -41,10 +41,10 @@ export * from './services/util.service';
     FilterResponsivePipe
   ]
 })
-export class Ng2SmartCommon {
+export class Ng2SmartCommonModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: Ng2SmartCommon,
+      ngModule: Ng2SmartCommonModule,
       providers: [
         DynamicComponentsService,
         ResponsiveService,
