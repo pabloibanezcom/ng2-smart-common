@@ -1,5 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 // DIRECTIVES
 import { InjectComponentDirective } from './directives/inject-component.directive';
@@ -19,14 +21,18 @@ export * from './pipes/filter-responsive.pipe';
 import { DynamicComponentsService } from './services/dynamic-components.service';
 import { ResponsiveService } from './services/responsive.service';
 import { UtilService } from './services/util.service';
+import { HttpService } from './services/http.service';
 
 export * from './services/dynamic-components.service';
 export * from './services/responsive.service';
 export * from './services/util.service';
+export * from './services/http.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    HttpClientModule
   ],
   declarations: [
     InjectComponentDirective,
@@ -35,6 +41,8 @@ export * from './services/util.service';
     FilterResponsivePipe
   ],
   exports: [
+    BrowserModule,
+    HttpClientModule,
     InjectComponentDirective,
     ComplexPropertyPipe,
     ComponentInputsPipe,
@@ -46,9 +54,11 @@ export class Ng2SmartCommonModule {
     return {
       ngModule: Ng2SmartCommonModule,
       providers: [
+        HttpClient,
         DynamicComponentsService,
         ResponsiveService,
-        UtilService
+        UtilService,
+        HttpService
       ]
     };
   }
